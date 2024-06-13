@@ -1,0 +1,39 @@
+user 1:
+Savidu Illankoon
+No 49,NegamboRoad, Kurunegala
+savidu@email.com
+1
+Savidu
+Savidu01
+
+user 2:
+Janith Charuka
+No.17 Kaduwela, Colombo
+janithcharuka@gmail.com
+2
+Charuka
+Charuka02
+
+user 3:
+Chamodi Dumindra
+No 43, Mathugama Road, Kaluthara
+chamodi@gmail.com
+3
+Chamodi
+Chamodi03
+
+user 4:
+Gayan Jayathissa
+No 17/2, Udawatta, Mirigama
+gayan@gmail.com
+4
+Gayan
+Gayan04
+
+user 5:
+Sarani Rathnayake
+No 15, Alakoladeniya, Kurunegala
+sarani@gmail.com
+5
+Sarani
+Sarani05

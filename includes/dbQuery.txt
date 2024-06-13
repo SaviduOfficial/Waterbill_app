@@ -1,0 +1,138 @@
+1)
+
+CREATE DATABASE waterbills;
+
+use waterbills;
+
+CREATE TABLE userinfo(
+    user_id int(6) AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    name varchar(11) NOT NULL,
+    email varchar(11) UNIQUE,
+    wtrbillnum int(6) NOT NULL,
+    username varchar(11) NOT NULL UNIQUE,
+    passwords varchar(11) NOT NULL
+);
+
+
+
+2)
+add datatype when altering a columnn
+
+use waterbills;
+
+ALTER TABLE userinfo
+MODIFY COLUMN wtrbillnum INT,  
+ADD CONSTRAINT wtrbill_unique UNIQUE (wtrbillnum);
+
+
+3) forgot to add address column to userinfo table so,
+
+USE waterbills;
+
+ALTER TABLE userinfo
+ADD COLUMN address varchar(225)
+AFTER name;
+
+
+
+4) new table call "water_bill_units"
+
+use waterbills;
+
+CREATE TABLE water_bill_units(
+    id_no int(11) AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    consumption_per_month_kWh varchar(9) NOT NULL,
+    energy_charge_lkr_kWh DECIMAL(11,2) NOT NULL,
+    fixed_charge_LKR_month DECIMAL(11,2) NOT NULL DEFAULT 0.0
+
+);
+
+5) insert data to water bill untis table 
+
+use waterbills;
+
+INSERT INTO water_bill_units (consumption_per_month_kWh, energy_charge_lkr_kWh, fixed_charge_LKR_month) VALUES ('0-60', 25.00, 0.0);
+INSERT INTO water_bill_units (consumption_per_month_kWh, energy_charge_lkr_kWh, fixed_charge_LKR_month) VALUES ('61-90', 30.00, 400.0);
+INSERT INTO water_bill_units (consumption_per_month_kWh, energy_charge_lkr_kWh, fixed_charge_LKR_month) VALUES ('91-120', 50.00, 1000.0);
+INSERT INTO water_bill_units (consumption_per_month_kWh, energy_charge_lkr_kWh, fixed_charge_LKR_month) VALUES ('121-180', 50.00, 1500.0);
+INSERT INTO water_bill_units (consumption_per_month_kWh, energy_charge_lkr_kWh, fixed_charge_LKR_month) VALUES ('Over 180', 75.00, 2000.0);
+
+
+6) new table for usageinfo (history)
+
+use waterbills;
+
+CREATE TABLE usageinfo(
+	id_no int(11) NOT NULL PRIMARY KEY,
+    	username varchar(11) NOT NULL,
+    	month varchar(11) NOT NULL,
+ 	year varchar(11)  NOT NULL,
+    	units DECIMAL (11,2) NOT NULL DEFAULT 0,
+    	amount DECIMAL (11,2) NOT NULL DEFAULT 0,
+    	FOREIGN KEY (username) REFERENCES userinfo (username) ON DELETE CASCADE ON UPDATE CASCADE
+    
+
+7)change primary key
+
+use waterbills;
+
+ALTER TABLE usageinfo DROP PRIMARY KEY, ADD PRIMARY KEY(username, year, month);
+);
+
+
+8)alter table to accept month as a interger
+use waterbills;
+
+ALTER TABLE usageinfo MODIFY COLUMN month INT;
+
+
+
+
+9)Super USer Table
+
+use waterbills;
+
+
+
+CREATE TABLE super_user(
+    id_no int(11) AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    username Varchar(11) NOT NULL,
+    password varchar(11) NOT NULL
+    
+
+);
+
+
+10)super user insert
+use waterbills;
+
+
+
+INSERT INTO super_user(username, password) VALUES('SuperUser' ,'Super123');
+
+
+
+
+12) removed a column
+
+use waterbills;
+
+ALTER TABLE usageinfo
+DROP COLUMN id_no;
+
+
+
+
+13)modify units to int coz its always get zero
+use waterbills;
+
+ALTER TABLE usageinfo
+MODIFY COLUMN units int;
+
+
+
+
+
+
+
+
